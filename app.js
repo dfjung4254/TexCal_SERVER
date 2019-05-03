@@ -1,4 +1,4 @@
-var express = require('express');
+﻿var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var package_file = require('./package.json');
@@ -17,8 +17,9 @@ app.get('/', function (req, res) {
 app.post('/api', function (req, res) {
     /*
         무주택여부
-        연봉
+        총급여액
         비과세
+        부양가족수
         부양가족수 - 20세 이하
         부양가족수 - 70세 이상
         부양가족수 - 장애인
@@ -40,6 +41,8 @@ app.post('/api', function (req, res) {
     var isHomeless = req.body.isHomeless;
     var salary = req.body.salary;
     var texExemption = req.body.texExemption;
+    var workingMonths = req.body.workingMonths;
+    var dependents = req.body.dependents;
     var dependents_child = req.body.dependents_child;
     var dependents_old = req.body.dependents_old;
     var dependents_disabled = req.body.dependents_disabled;
@@ -65,7 +68,7 @@ app.post('/api', function (req, res) {
     
     /* 계산 함수 */
     var output2 = func.calculate([
-        isHomeless, salary, texExemption, dependents_child,
+        isHomeless, salary, texExemption, workingMonths, dependents, dependents_child,
         dependents_old, dependents_disabled, housingOffer, housingLeaseLoan,
         longTermMortgageLoan, creditCard, checkCardAndCashReceipts, zeroPay,
         transportationCost, traditionalMarket, privatePension, protectionInsurance,
@@ -76,6 +79,6 @@ app.post('/api', function (req, res) {
     
 });
 
-app.listen(process.env.PORT, function () {
-    console.log("Server running at " + process.env.PORT);
+app.listen(80, function () {
+    console.log("Server running at " + 80);
 });

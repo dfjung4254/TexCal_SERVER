@@ -7,3 +7,66 @@ html
         div(align="center")
             h1 WELCOME TEXCAL
             h2 간편한 절세 솔루션
+            form(action="/api", method="post")
+                text 무주택여부 : 
+                input(type="text", name="isHomeless", size="40")
+                br
+                text 연봉 : 
+                input(type="text", name="salary", size="40")
+                br
+                text 비과세 : 
+                input(type="text", name="texExemption", size="40")
+                br
+                text 부양가족수 - 20세 이하 : 
+                input(type="text", name="dependents_child", size="40")
+                br
+                text 부양가족수 - 70세 이하 : 
+                input(type="text", name="dependents_old", size="40")
+                br
+                text 부양가족수 - 장애인 : 
+                input(type="text", name="dependents_disabled", size="40")
+                br
+                text 주택청약 : 
+                input(type="text", name="housingOffer", size="40")
+                br
+                text 주택임차차입금 원리금 상환액 : 
+                input(type="text", name="housingLeaseLoan", size="40")
+                br
+                text 장기주택저당차입금 이자 상환액 : 
+                input(type="text", name="longTermMortgageLoan", size="40")
+                br
+                text 신용카드 : 
+                input(type="text", name="creditCard", size="40")
+                br
+                text 체크카드/현금영수증 : 
+                input(type="text", name="checkCardAndCashReceipts", size="40")
+                br
+                text 제로페이 : 
+                input(type="text", name="zeroPay", size="40")
+                br
+                text 교통비 : 
+                input(type="text", name="transportationCost", size="40")
+                br
+                text 전통시장 : 
+                input(type="text", name="traditionalMarket", size="40")
+                br
+                text 사적연금 : 
+                input(type="text", name="privatePension", size="40")
+                br
+                text 보장성 보험 : 
+                input(type="text", name="protectionInsurance", size="40")
+                br
+                text 장애인 보장성 보험 : 
+                input(type="text", name="disabledProtectionInsurance", size="40")
+                br
+                text 의료비 : 
+                input(type="text", name="medicalExpenses", size="40")
+                br
+                text 교육비 : 
+                input(type="text", name="educationalExpenses", size="40")
+                br
+                text 월세 : 
+                input(type="text", name="monthly", size="40")
+                br
+                br
+                input(type="submit")

@@ -2,9 +2,9 @@ function calculate([isHomeless, salary, texExemption, workingMonths, dependents,
     dependents_old, dependents_disabled, housingOffer, housingLeaseLoan,
     longTermMortgageLoan, creditCard, checkCardAndCashReceipts, zeroPay,
     transportationCost, traditionalMarket, privatePension, protectionInsurance,
-    disabledProtectionInsurance, medicalExpenses, educationalExpenses, monthly]) {
+    disabledProtectionInsurance, medicalExpenses, educationalExpenses, monthly], idx) {
     
-    var obj = new Object(); 
+    var obj = new Object();
     obj.isHomeless = isHomeless;
     obj.salary = salary;
     obj.texExemption = texExemption;
@@ -28,13 +28,36 @@ function calculate([isHomeless, salary, texExemption, workingMonths, dependents,
     obj.educationalExpenses = educationalExpenses;
     obj.monthly = monthly;
 
-    return obj;
+    var table = make_table(obj);
+    var obj_return;
+    switch (idx) {
+        case 0:
+            obj_return = get_aptApp(obj, table);
+            break;
+        case 1:
+            obj_return = get_creditCard(obj, table);
+            break;
+        case 2:
+            obj_return = get_insurance(obj, table);
+            break;
+        case 3:
+            obj_return = get_privatePension(obj, table);
+            break;
+        case 4:
+            obj_return = get_medical(obj, table);
+            break;
+        case 5:
+            obj_return = get_common(obj, table);
+            break;
+    }
+
+    return obj_return;
 }
 
 /* 주택청약 계산 */
 function get_aptApp(obj, table) {
     
-    var aptApp = new Object();
+    var obj_aptApp = new Object();
 
     /* 1. 주택청약 */
     var additionalSave = 0;     // 주택청약추가적립금액
@@ -85,10 +108,23 @@ function get_aptApp(obj, table) {
         rentReductionRate = (obj.salary > 55000000) ? 0.132 : 0.11;
     } 
 
+    /* OBJECT 정리 */
+    obj_aptApp.additionalSave = additionalSave;
+    obj_aptApp.additionalTaxReduction = additionalTaxReduction;
+    obj_aptApp.redemption = redemption;
+    obj_aptApp.redemptionRate = redemptionRate;
+    obj_aptApp.interestPaymentRate = interestPaymentRate;
+    obj_aptApp.maximumInterest = maximumInterest;
+    obj_aptApp.rentReductionRate = rentReductionRate;
+
+    return obj_aptApp;
+
 }
 
 /* 신용카드 계산 */
 function get_creditCard(obj, table) {
+
+    var obj_creditCard = new Object();
 
     var maxValue = 0;
     if (obj.salary > 120000000) {
@@ -139,20 +175,43 @@ function get_creditCard(obj, table) {
     var creditSuggestion = min_expenditure_value;       // 신용카드 추천 지출
     var checkSuggestion = checkExpenditure_total - min_expenditure_value;       // 체크카드 추천 지출
 
+    obj_creditCard.creditExpenditure_additional = creditExpenditure_additional;
+    obj_creditCard.checkExpenditure_additional = checkExpenditure_additional;
+    obj_creditCard.zeroPayExpenditure_additional = zeroPayExpenditure_additional;
+    obj_creditCard.taxRefund = taxRefund;
+    obj_creditCard.min_expenditure_value = min_expenditure_value;
+    obj_creditCard.creditExpenditure_total = creditExpenditure_total;
+    obj_creditCard.creditTaxRefundRate = creditTaxRefundRate;
+    obj_creditCard.checkExpenditure_total = checkExpenditure_total;
+    obj_creditCard.checkTaxRefundRate = checkTaxRefundRate;
+    obj_creditCard.creditSuggestion = creditSuggestion;
+    obj_creditCard.checkSuggestion = checkSuggestion;
+
+    return obj_creditCard;
+
 }
 
 /* 보험료 세액공제 계산 */
 function get_insurance(obj, table) {
-    
+
+    var obj_insurance = new Object();
+
     var insurancePayment_additional = 1000000 - obj.protectionInsurance;        // 추가 보험 지급액
     insurancePayment_additional = (insurancePayment_additional < 0) ? 0 : insurancePayment_additional;
     var insuranceTaxRefund_additional = insurancePayment_additional * 0.132;    // 추가 보험 세액공제
+
+    obj_insurance.insurancePayment_additional = insurancePayment_additional;
+    obj_insurance.insuranceTaxRefund_additional = insuranceTaxRefund_additional;
+
+    return obj_insurance;
 
 }
 
 /* 사적연금 계산 */
 function get_privatePension(obj, table) {
     
+    var obj_privatePension = new Object();
+
     var maxVal = (obj.salary > 120000000) ? 3000000 : 4000000;
 
     var privatePension_additional = maxVal - obj.privatePension;        // 사적연금 추가 납부액
@@ -162,18 +221,31 @@ function get_privatePension(obj, table) {
 
     var privatePensionTaxRefund_additional = privatePension_additional * rate_multi * 1.1;      // 사적연금 세액 공제
 
+    obj_privatePension.privatePension_additional = privatePension_additional;
+    obj_privatePension.privatePensionTaxRefund_additional = privatePensionTaxRefund_additional;
+
+    return obj_privatePension;
+
 }
 
 /* 의료비 계산 */
 function get_medical(obj, table) {
     
+    var obj_medical = new Object();
+
     var minimumMedicalExpense = obj.salary * 0.03;  // 의료비 최소 지출액.
+
+    obj_medical.minimumMedicalExpense = minimumMedicalExpense;
+
+    return obj_medical;
 
 }
 
 /* 공통 계산 */
 function get_common(obj, table) {
     
+    var obj_common = new Object();
+
     /* 자녀 세액 공제 */
     var deductionChild_annual = (obj.dependents_child < 2) ? 150000 : 300000;       // 출산 시 매년 공제액
     var deductionChild_first = 0;           // 출산 년도 공제액
@@ -184,6 +256,11 @@ function get_common(obj, table) {
     } else {
         deductionChild_first = 700000;
     }
+
+    obj_common.deductionChild_annual = deductionChild_annual;
+    obj_common.deductionChild_first = deductionChild_first;
+
+    return obj_common;
 
 }
 
@@ -236,7 +313,7 @@ function make_table(obj) {
         earnedIncomeDeduction = 14750000 + (obj.salary - 100000000) * 0.02;
     } else if (obj.salary > 45000000) {
         earnedIncomeDeduction = 12000000 + (obj.salary - 45000000) * 0.05;
-    } else if (ojb.salary > 15000000) {
+    } else if (obj.salary > 15000000) {
         earnedIncomeDeduction = 7500000 + (obj.salary - 15000000) * 0.15;
     } else if (obj.salary > 5000000) {
         earnedIncomeDeduction = 3500000 + (obj.salary - 5000000) * 0.4;

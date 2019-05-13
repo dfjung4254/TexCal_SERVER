@@ -25,12 +25,12 @@ curl -X POST http://34.83.160.40/api/**CATEGORY** \
         monthly=2400000"                        // 월세
 
 ##CATEGORY
- - /api/**table**               // 세금계산에 필요한 테이블 표
- - /api/**aptApp**              // 주택청약
- - /api/**creditCard**          // 신용카드
- - /api/**insurance**           // 보험료
- - /api/**privatePension**      // 사적연금
- - /api/**medical**             // 의료비
- - /api/**common**              // 공통
+ - /api/**table**               | 세금계산에 필요한 테이블 표
+ - /api/**aptApp**              | 주택청약
+ - /api/**creditCard**          | 신용카드
+ - /api/**insurance**           | 보험료
+ - /api/**privatePension**      | 사적연금
+ - /api/**medical**             | 의료비
+ - /api/**common**              | 공통
 
 making...

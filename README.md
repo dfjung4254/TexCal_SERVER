@@ -1,4 +1,4 @@
-### TEXCAL Rest API Server
+#### TEXCAL Rest API Server
 ex:)
 curl -X POST http://34.83.160.40/api/**CATEGORY** \ 
 --data "isHomeless=1& \                         // 무주택여부
@@ -24,7 +24,10 @@ curl -X POST http://34.83.160.40/api/**CATEGORY** \
         educationalExpenses=200000& \           // 교육비
         monthly=2400000"                        // 월세
 
-##CATEGORY
+
+###CATEGORY
+Category | 설명
+------|------
  - /api/**table**               | 세금계산에 필요한 테이블 표
  - /api/**aptApp**              | 주택청약
  - /api/**creditCard**          | 신용카드

@@ -14,6 +14,43 @@ app.get('/', function (req, res) {
     res.render('index');
 });
 
+app.post('/api/table', function (req, res) {
+    
+    var isHomeless = req.body.isHomeless;
+    var salary = req.body.salary;
+    var texExemption = req.body.texExemption;
+    var workingMonths = req.body.workingMonths;
+    var dependents = req.body.dependents;
+    var dependents_child = req.body.dependents_child;
+    var dependents_old = req.body.dependents_old;
+    var dependents_disabled = req.body.dependents_disabled;
+    var housingOffer = req.body.housingOffer;
+    var housingLeaseLoan = req.body.housingLeaseLoan;
+    var longTermMortgageLoan = req.body.longTermMortgageLoan;
+    var creditCard = req.body.creditCard;
+    var checkCardAndCashReceipts = req.body.checkCardAndCashReceipts;
+    var zeroPay = req.body.zeroPay;
+    var transportationCost = req.body.transportationCost;
+    var traditionalMarket = req.body.traditionalMarket;
+    var privatePension = req.body.privatePension;
+    var protectionInsurance = req.body.protectionInsurance;
+    var disabledProtectionInsurance = req.body.disabledProtectionInsurance;
+    var medicalExpenses = req.body.medicalExpenses;
+    var educationalExpenses = req.body.educationalExpenses;
+    var monthly = req.body.monthly;
+
+    var output2 = func.get_table([
+        isHomeless, salary, texExemption, workingMonths, dependents, dependents_child,
+        dependents_old, dependents_disabled, housingOffer, housingLeaseLoan,
+        longTermMortgageLoan, creditCard, checkCardAndCashReceipts, zeroPay,
+        transportationCost, traditionalMarket, privatePension, protectionInsurance,
+        disabledProtectionInsurance, medicalExpenses, educationalExpenses, monthly
+    ]);
+
+    return res.status(201).json(output2);
+
+});
+
 app.post('/api', function (req, res) {
     /*
         무주택여부

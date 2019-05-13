@@ -1,0 +1,85 @@
+1. 주택
+ - 주택청약
+ - bool 주택청약에 해당여부(true/false)
+ - true일 시 연 (\) 넣을 시 (\) 세금을 아낄 수 있다.
+
+ - 주택자금소득공제
+ - bool 해당 여부(t/f)
+ - true 일 시 설명(string, 상수), 연 (\) 한도 (%) 세금을 아낀다.
+
+ - 장기주택 저당차입금 이자상환액
+ - 이자상환액의 (%) 를 세금 환급
+ - (서브 - 3가지 조건(t/f)을 선택 --> 이자한도 (\) )
+
+ - 월세세액공제
+ - bool 해당 여부(t/f)
+ - 조건(string, 상수) 할 경우 (%) 환급 받는다.
+
+2. 신용카드 등
+ - 체크/현금영수증(\)
+ - or 제로페이(\) --> 추가 환급(\)
+
+ - 체크카드 소비기준 (\)
+ - 총 (\) 지출분까지 약 (%) 환급
+
+ - 신용카드 소비기준 (\)
+ - 총 (\) 지출분까지 약 (%) 환급
+
+ - 신용카드 (\) 지출
+ - 체크카드 (\) 지출
+
+ - 추가(string, 상수) 3개
+
+3. 보험료
+ - (\) 추가 넣으면 (\) 더받을 수 있음
+ - 추가(string, 상수) 2개
+
+4. 사적연금
+ - (\) 추가 넣으면 (\) 더받을 수 있음
+ - 추가(string, 상수) 1개
+
+5. 의료비
+ - (\) 초과해서 의료비 지출 할 경우 환급 해줌.
+ - 추가(string, 상수) 4개
+
+6. 공통
+ - 인적공제 - 글(string ) 1개
+ - 자녀세액공제 - (\) 세금 매년 줄이고 출산년도에 (\) 줄여줌
+ - 교육비공제 - 글(string) 많음
+ - 정치자금 세액공제 - string
+
+
+
+earnedIncomeDeduction
+totalIncome
+totalIncomeDeduction_basic
+totalIncomeDeduction_pension
+totalIncomeDeduction_insurance
+totalIncomDeduction_aptApp
+totalIncomeDeduction_expenditure
+totalTaxBase
+calTaxAmount
+taxDeduction_work
+taxDeduction_child
+taxDeduction_pension
+taxDeduction_insurance
+taxDeduction_medical
+taxDeduction_education
+taxDeduction_monthly
+taxConclusion
+calTaxRate
+effectiveTaxRate
+
+
+
+
+
+
+
+
+
+
+
+
+
+

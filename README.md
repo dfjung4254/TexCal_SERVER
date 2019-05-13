@@ -1,5 +1,6 @@
-## TEXCAL Rest API Server _ 심플 절세 솔루션
-제작
+## TEXCAL Rest API Server 심플 절세 솔루션
+
+
 ----------------------------------------------
 #### 기획 : 정자현 / **********@naver.com / 고려대학교
 #### 개발 : 정근화 / rmsghk4254@naver.com / 홍익대학교

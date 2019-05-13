@@ -1,6 +1,7 @@
-#### TEXCAL Rest API Server
+## TEXCAL Rest API Server
 ex:)
-curl -X POST http://34.83.160.40/api/**CATEGORY** \ 
+~~~
+curl -X POST http://34.83.160.40/api/ **CATEGORY** \ 
 --data "isHomeless=1& \                         // 무주택여부
         salary=50000000& \                      // 연봉
         texExemption=0& \                       // 비과세
@@ -22,18 +23,19 @@ curl -X POST http://34.83.160.40/api/**CATEGORY** \
         disabledProtectionInsurance=0& \        // 장애인 보장성 보험
         medicalExpenses=400000& \               // 의료비
         educationalExpenses=200000& \           // 교육비
-        monthly=2400000"                        // 월세
-
-
-###CATEGORY
+        monthly=2400000"                        // 월세 
+~~~
+   
+### CATEGORY
 Category | 설명
 ------|------
- - /api/**table**               | 세금계산에 필요한 테이블 표
- - /api/**aptApp**              | 주택청약
- - /api/**creditCard**          | 신용카드
- - /api/**insurance**           | 보험료
- - /api/**privatePension**      | 사적연금
- - /api/**medical**             | 의료비
- - /api/**common**              | 공통
+/api/**table**               | 세금계산용 테이블
+/api/**aptApp**              | 주택청약
+/api/**creditCard**          | 신용카드
+/api/**insurance**           | 보험료
+/api/**privatePension**      | 사적연금
+/api/**medical**             | 의료비
+/api/**common**              | 공통
 
-making...
+
+##### making... return 값 추후 설명

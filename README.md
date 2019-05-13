@@ -1,5 +1,10 @@
-## TEXCAL Rest API Server
-ex:)
+## TEXCAL Rest API Server _ 심플 절세 솔루션
+# 제작
+# -----------------------------------------
+# 기획 : 정자현 / **********@naver.com / 고려대학교
+# 개발 : 정근화 / rmsghk4254@naver.com / 홍익대학교
+# -----------------------------------------
+ex:) 예제
 ~~~
 curl -X POST http://34.83.160.40/api/ **CATEGORY** \ 
 --data "isHomeless=1& \                         // 무주택여부

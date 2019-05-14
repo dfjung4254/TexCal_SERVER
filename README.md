@@ -45,3 +45,4 @@ Category | 설명
 
 
 ##### making... return 값 추후 설명
+#### TODO : json 타입 payload 설정 / readme.md 추가작성 / GCE 실서버 올리기..
